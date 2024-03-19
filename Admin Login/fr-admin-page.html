@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@275;300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+  body {
+     margin: 0;
+     padding: 0;
+     overflow: hidden;
+  }
+  html, body, .container-fluid, .row {
+     height: 100%; /* Ensure full height */
+  }
+  .fr-admin-page {
+     background: #FFFFFF;
+     display: flex;
+     flex-direction: row;
+     padding-right: 69px;
+     width: 100%;
+     box-sizing: border-box;
+  }
+  .admin-staff {
+    margin-bottom: 23px;
+    display: flex;
+    flex-direction: row;
+    width: 453px;
+    box-sizing: border-box;
+  }
+  .image-1 {
+    background: url('https://fn12.com/api/clusters/cluster-fn12-prod-asia-southeast1/projects/53pjLK5bCKgGBVkxfoFQki/assets/images/d2a03e650ab9e47053d0f131eadf8779fa71266d?Expires=1711073837&KeyName=fn12-cdn&Signature=WSyTz8WFqLOwG-BHd5K7jFXu37w=') 50% / cover no-repeat;
+    width: 414px;
+    height: 100px;
+  }
+  .attendance-system {
+    margin-right: 1px;
+    overflow-wrap: break-word;
+    font-family: 'Poppins';
+    font-weight: 500;
+    font-size: 24px;
+    letter-spacing: 0.2px;
+    color: #0E6E54;
+  }
+  .img-input-pass {
+    border-radius: 50px;
+    border: 1px solid #0E6E54;
+    background: #FFFFFF;
+    position: relative;
+    margin-bottom: 31px;
+    display: flex;
+    flex-direction: row;
+    padding: 12px 0 12px 26px;
+    width: 453px;
+    box-sizing: border-box;
+  }
+  .img-input-pass input.password {
+    border: none; 
+    outline: none;
+    width: 360px;
+  }
+  .login {
+    overflow-wrap: break-word;
+    font-family: 'Poppins';
+    font-weight: 800;
+    font-size: 18px;
+    color: #FFFFFF;
+  }
+  .iconkey {
+   margin: 2px 14px 2px 0;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   width: 20px;
+   height: 20px;
+   box-sizing: border-box;
+  } 
+  .vector {
+   width: 20px;
+   height: 20px;
+  }
+  .img-input-email {
+   border-radius: 50px;
+   border: 1px solid #0E6E54;
+   background: #FFFFFF;
+   position: relative;
+   margin-bottom: 29px;
+   display: flex;
+   flex-direction: row;
+   padding: 12px 0 12px 26px;
+   width: 453px;
+   box-sizing: border-box;
+  }
+  .img-input-email input.enter-your-email {
+    border: none; 
+    outline: none;
+  }
+  .enter-your-email {
+    overflow-wrap: break-word;
+    font-family: 'Poppins';
+    font-weight: 400;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.42);
+  }
+  .icon-envelope {
+    margin: 4px 14px 5px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 20px;
+    height: 15px;
+    box-sizing: border-box;
+  }
+  .vector-3 {
+   width: 20px;
+   height: 15px;
+  }
+  .password {
+    overflow-wrap: break-word;
+    font-family: 'Poppins';
+    font-weight: 400;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.42);
+ }
+ .logo {
+   margin: 0 19px 22.5px 20px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 414px;
+   box-sizing: border-box;
+ }
+ .line-1 {
+   background: #0E6E54;
+   margin: 0 10px 14.5px 8px;
+   width: 435px;
+   height: 2px;
+ }
+ .login-button {
+   border-radius: 25px;
+   background: #548E40;
+   position: relative;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   width: 453px;
+   box-sizing: border-box;
+ }
+ .login-button button.login {
+   border-radius: 25px;
+   padding: 14px 0;
+   width: 453px;
+   background-color: transparent;
+   border: none;
+   outline: none;
+   cursor: pointer; /* Change cursor to pointer on hover */
+   transition: background-color 0.3s ease; /* Add transition effect */
+ }
+ .login-button button.login:hover {
+   background-color: #22461d; /* Change background color on hover */
+ }
+ .login-4 {
+   margin-top: 30vh;
+   margin-bottom: 0; 
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   box-sizing: border-box;
+   height: 100vh; /* Set height to 100% of viewport height */
+   overflow-y: auto;
+   max-width: 500px; /* Adjust maximum width as needed */
+ }
+ .image-2 {
+   background: url('images/image2.jpg');
+   background-size: cover; 
+   background-position: center;
+   margin-right: 0; 
+   width: 100%;
+   height: 100%;
+   opacity: 50%;
+ }
+ .pic-lib {
+   background: #16911B;
+   position: relative;
+   margin-right: 55px;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   padding-right: 1px;
+   padding-left: 1px;
+   width: 60%;
+   height: 100vh;
+   box-sizing: border-box;
+ }
+ .frame-4 {
+   border-radius: 15px 0 0 0;
+   border-left: 2px solid #548E40;
+   border-top: 2px solid #548E40;
+   background: #90B782;
+   margin-right: 13px;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   padding: 8px 2px 10px 0;
+   width: 220px;
+   box-sizing: border-box;
+ }
+ .admin {
+   overflow-wrap: break-word;
+   font-family: 'Poppins';
+   font-weight: 700;
+   font-size: 18px;
+   color: #FFFFFF;
+ }
+ .frame-5 {
+   border-radius: 0 15px 0 0;
+   border-top: 2px solid #548E40;
+   border-right: 2px solid #548E40;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   padding: 8px 0 10px 2px;
+   width: 220px;
+   box-sizing: border-box;
+ }
+ .staff {
+   overflow-wrap: break-word;
+   font-family: 'Poppins';
+   font-weight: 700;
+   font-size: 18px;
+   color: #000000;
+ }
+ #errorMessage {
+   font-family: 'Poppins', sans-serif;
+ }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 pic-lib" style="background: #16911B;">
+        <div class="image-2"></div>
+      </div>
+      <div class="col-md-4 login-4">
+        <div class="logo">
+          <div class="image-1"></div>
+          <span class="attendance-system">Attendance System</span>
+        </div>
+        <div class="line-1"></div>
+        <div class="admin-staff">
+          <div class="frame-4">
+            <span class="admin">Admin</span>
+          </div>
+          <div class="frame-5" onclick="redirectToStaffPage()">
+            <span class="staff">Staff</span>
+          </div>
+        </div>
+        <div class="img-input-email mb-3">
+          <div class="icon-envelope">
+            <object class="email" type="image/svg+xml" data="vectors/email.svg"></object>
+          </div>
+          <input class="enter-your-email" type="email" id="emailInput" placeholder="Enter your email">
+        </div>
+        <div class="img-input-pass mb-3">
+          <div class="iconkey">
+            <object class="key" type="image/svg+xml" data="vectors/key.svg"></object>
+          </div>
+          <input type="password" id="passwordInput" class="password" placeholder="Password">
+        </div>
+          <div class="login-button mb-3">
+            <button class="btn-primary login" onclick="login()">LOGIN</button>
+          </div>
+          <div id="errorMessage" style="color: #0E6E54; display: none;">Invalid email or password. Please try again.</div>
+            <div id="loadingSpinner" style="display: none;">
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden" style="color: #0E6E54;">Loading...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+  <script>
+    function login() {
+      var email = document.getElementById("emailInput").value;
+      var password = document.getElementById("passwordInput").value;
+
+      showLoadingState();
+
+      if (email === "admin" && password === "admin") {
+        setTimeout(function() {
+          hideLoadingState();
+
+          setTimeout(function() {
+            window.location.href = "admin_AttendanceList.php";
+          }, 0); 
+        },0);
+      } else {
+        hideLoadingState();
+
+        document.getElementById("errorMessage").style.display = "block";
+      }
+    }
+    function redirectToStaffPage() {
+      window.location.href = "../Staff%20Login/fr-staff-page.html";
+    }
+    function showLoadingState() {
+      document.getElementById("loadingSpinner").style.display = "block";
+    }
+    function hideLoadingState() {
+      document.getElementById("loadingSpinner").style.display = "none";
+    }
+    // logging in after pressing the ENTER button in keyboard
+    function handleKeyPress(event) {
+      if (event.key === 'Enter') {
+        login(); // Call login function when Enter key is pressed
+      }
+    }
+
+    // Add event listener to password input field
+    document.getElementById("passwordInput").addEventListener("keypress", handleKeyPress);
+  </script>
+</body>
+</html>
