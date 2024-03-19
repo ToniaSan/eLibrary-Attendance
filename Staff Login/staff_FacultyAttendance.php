@@ -7,7 +7,8 @@
     <title>Faculty Attendance</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@275;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@275;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
@@ -18,7 +19,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="style.css">
-    
+
     <style>
         body,
         html {
@@ -252,6 +253,8 @@
             font-weight: 400;
             font-size: 14px;
             color: rgba(120, 120, 120, 0.82);
+            border: none;
+            outline: none;
         }
 
         .add {
@@ -296,8 +299,14 @@
         .search-icon {
             align-items: center;
         }
+
         .attendance-table td:nth-child(7) {
             text-align: center;
+        }
+
+        #tableWrapper {
+            overflow-x: auto;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -318,102 +327,140 @@
                 </div>
             </div>
             <div class="search">
-                <object class="search-icon" type="image/svg+xml" data="vectors/search.svg">
-                </object>
-                <span class="search-for-something">
-                    Search for something
-                </span>
+                <object class="search-icon" type="image/svg+xml" data="vectors/search.svg"></object>
+                <input id="searchInput" type="text" class="search-for-something" onkeyup="searchTable()"
+                    placeholder="Search for something">
             </div>
         </div>
         </button>
-        <table class="attendance-table">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Full Name</th>
-                    <th>Student No.</th>
-                    <th>Department</th>
-                    <th>Time In</th>
-                    <th>Time Out</th>
-                    <th>Remarks</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                // Dummy data array 
-                $attendanceData = [
-                    ["2024-03-15", "John Doe", "123456", "IT", "08:00 AM", "05:00 PM", ""],
-                    ["2024-03-16", "Jane Smith", "789012", "HR", "09:00 AM", "04:00 PM", ""],
-                    ["2024-03-15", "John Doe", "123456", "IT", "08:00 AM", "05:00 PM", ""],
-                    ["2024-03-16", "Jane Smith", "789012", "HR", "09:00 AM", "04:00 PM", ""],
-                    ["2024-03-15", "John Doe", "123456", "IT", "08:00 AM", "05:00 PM", ""],
-                    ["2024-03-16", "Jane Smith", "789012", "HR", "09:00 AM", "04:00 PM", ""],
-                    ["2024-03-15", "John Doe", "123456", "IT", "08:00 AM", "05:00 PM", ""],
-                    ["2024-03-16", "Jane Smith", "789012", "HR", "09:00 AM", "04:00 PM", ""],
-                    ["2024-03-15", "John Doe", "123456", "IT", "08:00 AM", "05:00 PM", ""],
-                    ["2024-03-16", "Jane Smith", "789012", "HR", "09:00 AM", "04:00 PM", ""],
-                    ["2024-03-16", "Jane Smith", "789012", "HR", "09:00 AM", "04:00 PM", ""],
-                    ["2024-03-15", "John Doe", "123456", "IT", "08:00 AM", "05:00 PM", ""],
-                    ["2024-03-16", "Jane Smith", "789012", "HR","09:00 AM", "04:00 PM", ""],
-                    // Add more data rows as needed
-                ];
+        <div id="tableWrapper" style="overflow-x:auto;">
+            <table id="attendanceTable" class="attendance-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Full Name</th>
+                        <th>Student No.</th>
+                        <th>Department</th>
+                        <th>Time In</th>
+                        <th>Time Out</th>
+                        <th>Remarks</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    // Dummy data array 
+                    $attendanceData = [
+                        ["2024-03-15", "John Doe", "123456", "IT", "08:00 AM", "05:00 PM", ""],
+                        ["2024-03-16", "Jane Smith", "789012", "HR", "09:00 AM", "04:00 PM", ""],
+                        ["2024-03-15", "John Doe", "123456", "IT", "08:00 AM", "05:00 PM", ""],
+                        ["2024-03-16", "Jane Smith", "789012", "HR", "09:00 AM", "04:00 PM", ""],
+                        ["2024-03-15", "John Doe", "123456", "IT", "08:00 AM", "05:00 PM", ""],
+                        ["2024-03-16", "Jane Smith", "789012", "HR", "09:00 AM", "04:00 PM", ""],
+                        ["2024-03-15", "John Doe", "123456", "IT", "08:00 AM", "05:00 PM", ""],
+                        ["2024-03-16", "Jane Smith", "789012", "HR", "09:00 AM", "04:00 PM", ""],
+                        ["2024-03-15", "John Doe", "123456", "IT", "08:00 AM", "05:00 PM", ""],
+                        ["2024-03-16", "Jane Smith", "789012", "HR", "09:00 AM", "04:00 PM", ""],
+                        ["2024-03-16", "Jane Smith", "789012", "HR", "09:00 AM", "04:00 PM", ""],
+                        ["2024-03-15", "John Doe", "123456", "IT", "08:00 AM", "05:00 PM", ""],
+                        ["2024-03-16", "Jane Smith", "789012", "HR", "09:00 AM", "04:00 PM", ""],
+                        // Add more data rows as needed
+                    ];
 
-                $rowsPerPage = 10;
-                $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
-                $startIndex = ($currentPage - 1) * $rowsPerPage;
-                for ($i = $startIndex; $i < min($startIndex + $rowsPerPage, count($attendanceData)); $i++) {
-                    echo "<tr>";
-                    foreach ($attendanceData[$i] as $value) {
-                        echo "<td>$value</td>";
-                    }
-                    // Add edit and delete buttons
-                    echo '<td>
+                    $rowsPerPage = 10;
+                    $currentPage = isset ($_GET['page']) ? $_GET['page'] : 1;
+                    $startIndex = ($currentPage - 1) * $rowsPerPage;
+                    for ($i = $startIndex; $i < min($startIndex + $rowsPerPage, count($attendanceData)); $i++) {
+                        echo "<tr>";
+                        foreach ($attendanceData[$i] as $value) {
+                            echo "<td>$value</td>";
+                        }
+                        // Add edit and delete buttons
+                        echo '<td>
                             <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                             <a class="out" title="Out" data-toggle="tooltip"><i class="material-icons">login</i></a>
                           </td>';
-                    echo "</tr>";
+                        echo "</tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
+            <div class="pagination">
+                <?php
+                if ($currentPage > 1) {
+                    echo '<a href="?page=' . ($currentPage - 1) . '">Previous</a>';
+                } else {
+                    echo '<a class="disabled">Previous</a>';
                 }
                 ?>
-            </tbody>
-        </table>
-        <div class="pagination">
-            <?php
-            if ($currentPage > 1) {
-                echo '<a href="?page=' . ($currentPage - 1) . '">Previous</a>';
-            } else {
-                echo '<a class="disabled">Previous</a>';
-            }
-            ?>
-            <?php
-            if (count($attendanceData) - ($currentPage * $rowsPerPage) > 0) {
-                echo '<a href="?page=' . ($currentPage + 1) . '">Next</a>';
-            } else {
-                echo '<a class="disabled">Next</a>';
-            }
-            ?>
-        </div>
+                <?php
+                if (count($attendanceData) - ($currentPage * $rowsPerPage) > 0) {
+                    echo '<a href="?page=' . ($currentPage + 1) . '">Next</a>';
+                } else {
+                    echo '<a class="disabled">Next</a>';
+                }
+                ?>
+            </div>
         </div>
     </div>
     <script>
-    $(document).ready(function () {
-        // Function to handle edit button click
-        $(document).on("click", ".edit", function () {
-            alert("Edit button clicked");
+        $(document).ready(function () {
+            $(document).on("click", ".edit", function () {
+                alert("Edit button clicked");
+            });
+
+            $(document).on("click", ".out", function () {
+                var row = $(this).closest("tr");
+                row.find("td:nth-child(7)").text("OUT");
+                alert("Thank you for visiting the library!");
+
+                row.find(".edit, .out").prop("disabled", true);
+            });
         });
 
-        // Function to handle delete button click
-        $(document).on("click", ".out", function () {
-            // Find the row containing the delete button
-            var row = $(this).closest("tr");
-            // Set Remarks to "OUT"
-            row.find("td:nth-child(7)").text("OUT");
-            alert("Thank you for visiting the library!");
 
-            // Disable delete and edit buttons
-            row.find(".edit, .out").prop("disabled", true);
-        });
-    });
+        function handleKeyPress(event) {
+            if (event.keyCode === 13) {
+                searchTable();
+            }
+        }
+
+        function searchTable() {
+            var input, filter, table, tr, td, i, txtValue, found;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("attendanceTable");
+            tr = table.getElementsByTagName("tr");
+
+            var noResultsAlertShown = true;
+
+            for (i = 0; i < tr.length; i++) {
+                found = false;
+
+                for (var j = 0; j < tr[i].cells.length; j++) {
+                    td = tr[i].cells[j];
+                    if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            found = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (found) {
+                    tr[i].style.display = "";
+                    noResultsAlertShown = false;
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+
+            if (noResultsAlertShown) {
+                alert("There are no existing records matching your search.");
+            }
+        }
     </script>
 </body>
+
 </html>
