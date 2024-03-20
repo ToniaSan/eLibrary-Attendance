@@ -482,6 +482,7 @@
             }
         }
 
+        //Search and Filter the table
         function searchTable() {
             var input, filter, table, tr, td, i, txtValue, found;
             input = document.getElementById("searchInput");
@@ -494,22 +495,25 @@
             for (i = 0; i < tr.length; i++) {
                 found = false;
 
-                for (var j = 0; j < tr[i].cells.length; j++) {
-                    td = tr[i].cells[j];
-                    if (td) {
-                        txtValue = td.textContent || td.innerText;
-                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                            found = true;
-                            break;
+                // Skip filtering the table headers
+                if (tr[i].getElementsByTagName("th").length === 0) {
+                    for (var j = 0; j < tr[i].cells.length; j++) {
+                        td = tr[i].cells[j];
+                        if (td) {
+                            txtValue = td.textContent || td.innerText;
+                            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                found = true;
+                                break;
+                            }
                         }
                     }
-                }
 
-                if (found) {
-                    tr[i].style.display = "";
-                    noResultsAlertShown = false;
-                } else {
-                    tr[i].style.display = "none";
+                    if (found) {
+                        tr[i].style.display = "";
+                        noResultsAlertShown = false;
+                    } else {
+                        tr[i].style.display = "none";
+                    }
                 }
             }
 
