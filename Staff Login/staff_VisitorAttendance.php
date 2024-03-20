@@ -147,7 +147,7 @@
         }
 
         .attendance-table {
-            border-collapse: collapse;
+            border-collapse: separate;
             margin-top: 30px;
             width: 1050px;
             margin-right: 25px;
@@ -166,13 +166,25 @@
         }
 
         .attendance-table th {
-            background-color: #548E40;
+            background-color: #B4C7AE;
             color: white;
             font-family: 'Poppins';
             font-weight: 400;
             font-size: 18px;
             text-align: center;
             vertical-align: middle;
+            outline: none;
+            color: #1D2433;
+        }
+
+        th:first-child {
+            border-top-left-radius: 8px;
+            outline: none;
+        }
+
+        th:last-child {
+            border-top-right-radius: 8px;
+            outline: none;
         }
 
         .pagination {
@@ -273,6 +285,7 @@
             flex-direction: row;
             padding: 7.5px 15.6px 7.5px 15.5px;
             box-sizing: border-box;
+            align-items: center;
         }
 
         .plus {
@@ -284,7 +297,6 @@
             flex-direction: row;
             justify-content: center;
             align-items: center;
-            /* Center the content vertically */
             width: 25px;
             height: 25px;
             box-sizing: border-box;
@@ -300,13 +312,59 @@
             align-items: center;
         }
 
-        .attendance-table td:nth-child(9) {
+        .attendance-table td {
             text-align: center;
+        }
+
+        .edit {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 35px;
+            border: 2px solid transparent;
+            border-radius: 25%;
+            text-align: center;
+            line-height: 1;
+            margin-right: 5px;
+            text-decoration: none;
+            background-color: #B4C7AE;
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease;
+        }
+
+        .out {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 35px;
+            border: 2px solid transparent;
+            border-radius: 25%;
+            text-align: center;
+            line-height: 1;
+            margin-right: 5px;
+            text-decoration: none;
+            background-color: #FFA1A1;
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease;
+        }
+
+        .edit:hover,
+        .out:hover,
+        .material-icons:hover {
+            background-color: black;
+            color: white;
+        }
+
+        .material-icons {
+            font-size: 24px;
+            color: black;
         }
 
         #tableWrapper {
             overflow-x: auto;
-            margin-top: 20px;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -378,10 +436,10 @@
                             echo "<td>$value</td>";
                         }
                         // Add edit and delete buttons
-                        echo '<td>
+                        echo '<td style="text-align: center; display: flex; justify-content: center; align-items: center;">
                             <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                             <a class="out" title="Out" data-toggle="tooltip"><i class="material-icons">login</i></a>
-                          </td>';
+                            </td>';
                         echo "</tr>";
                     }
                     ?>
