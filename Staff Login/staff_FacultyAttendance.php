@@ -44,8 +44,8 @@
             display: inline-block;
             align-self: center;
             overflow-wrap: break-word;
-            font-family: 'Poppins';
-            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 200;
             font-size: 35px;
             margin-bottom: 15px;
             color: #000000;
